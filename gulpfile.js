@@ -17,7 +17,6 @@ var _          = require('lodash'),
 	pkg        = require('./package'),
 	rename     = require('gulp-rename'),
 	replace    = require('gulp-replace'),
-	tape       = require('gulp-tape'),
 
 	debug      = require('gulp-debug'),
 
@@ -37,12 +36,9 @@ var _          = require('lodash'),
 		main            : path.join(__dirname, pkg.main),
 		scriptsDist     : path.join(dist, 'scripts'),
 		scripts         : path.join(__dirname, 'scripts/**/*.js'),
-		styles          : [ path.join(__dirname, 'assets/styles/**/*'), path.join(__dirname, 'styles/**/*.less') ],
+		styles          : [ path.join(__dirname, 'assets/styles/**/*'), path.join(__dirname, 'styles/*.less') ],
 		stylesResources : path.join(__dirname, 'resources', 'styles'),
-		stylesDist      : path.join(dist, 'styles'),
-		test            : path.join(__dirname, 'test/**/*.js'),
-		testTmp         : path.join(__dirname, 'testTmp'),
-		vendorScripts   : path.join(__dirname, 'assets', 'scripts', '**/*.js')
+		stylesDist      : path.join(dist, 'styles')
 	},
 
 	// Handle the error by outputting info to the console
@@ -72,12 +68,6 @@ gulp.task('scripts', ['jshint'], function() {
 		.pipe(gulp.dest(paths.scriptsDist));
 });
 
-gulp.task('test', function() {
-	return gulp.src([paths.test, paths.scripts])
-		.pipe(babel({stage: 0}))
-		.pipe(gulp.dest(paths.testTmp))
-		.pipe(tape());
-});
 
 // style tasks -----------------------------------------------------------------
 
@@ -133,9 +123,6 @@ gulp.task('console-polyfill', function() {
 		.pipe(gulp.dest(paths.scriptsDist));
 });
 
-gulp.task('vendor-scripts', ['console-polyfill'], function() {
-	return gulp.src(paths.vendorScripts).pipe(gulp.dest(paths.scriptsDist));
-});
 
 gulp.task('html', function() {
 	return gulp.src(paths.html)
@@ -154,7 +141,6 @@ gulp.task('watch', function() {
 	gulp.watch(paths.images,        [ 'images' ]);
 	gulp.watch(paths.scripts,       [ 'scripts' ]);
 	gulp.watch(allStyles,           [ 'styles' ]);
-	gulp.watch(paths.vendorScripts, [ 'vendor-scripts' ]);
 	gulp.watch(paths.data,          [ 'data' ]);
 	gulp.watch(paths.gulpfile,      [ 'default' ]);
 
@@ -162,4 +148,4 @@ gulp.task('watch', function() {
 
 // default task ----------------------------------------------------------------
 
-gulp.task('default', [ 'data', 'scripts', 'styles', 'images', 'vendor-scripts', 'html' ]);
+gulp.task('default', [ 'data', 'scripts', 'styles', 'images', 'html' ]);
