@@ -20,6 +20,42 @@ Compass selector demonstration
 * Two compasses looks like overkill.
 * Click targets are small.
 
+### Aspect and Elevation in one
+
+![Aspect and Elevation in one](https://github.com/brendandgibson/avatech/blob/master/images/uac.png?raw=true)
+
+In this example, the user would select the desired aspects and elevations by clicking on the sections to toggle them on an off.
+
+#### Pros
+
+* Uses a familiar avalanche rose that users would have seen on Avalanche Forecast websites.
+* Condenses two widgets for filtering into one.
+* Looks cool.
+* Enables user to visualise the mountain easily.
+
+#### Cons
+
+* Could be difficult to implement.
+* There would have to be a call to action to explain to the user that they can click the segments to toggle them.
+* Visually cluttered on a small display.
+* Small targets.
+
+### Single Compass
+
+This is the design that I implemented. It packs the two compasses from the current implementation into one, with the user clicking and dragging across the aspects that they want to filter.
+
+#### Pros
+
+* One widget instead of two.
+* Very simple, but with enough information for the user to recognise a compass.
+* Larger target areas.
+
+#### Cons
+
+* It is not immediately obvious how to engage with this widget.
+* Not accessible.
+* Some quirks in selection (totally blamed on the implementation...)
+
 ## App
 
 ### Setup
