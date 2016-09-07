@@ -70,6 +70,8 @@ This is the design that I implemented. It packs the two compasses from the curre
 You must have node and npm installed. I have node v4.4.0 and npm v3.8.2 working on a mac.
 The server requires read/write access to the `/tmp` directory, and read access to the `public` directory.
 
+* git clone <URL from above>
+* `cd avatech`
 * `npm install`
 * `gulp`
 * `node node/server.js`
