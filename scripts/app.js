@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './components/Main';
+import configureStore from './configureStore';
+import { Provider } from 'react-redux';
 
 /**
 *
 * Main file for the javascript and rendering.
 *
 */
-var entryId = 'entry',
+
+const store = configureStore();
+
+const entryId = 'entry',
 
 	app = (function() {
 
 		return function() {
-			ReactDOM.render(<Main />, document.getElementById(entryId));
+			ReactDOM.render(<Provider store={store}><Main /></Provider>, document.getElementById(entryId));
 		};
 
 	})();
