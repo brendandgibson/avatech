@@ -20,3 +20,14 @@ Compass selector demonstration
 * Two compasses looks like overkill.
 * Click targets are small.
 
+## App
+
+### Setup
+
+You must have node and npm installed. I have node v4.4.0 and npm v3.8.2 working on a mac.
+The server requires read/write access to the `/tmp` directory, and read access to the `public` directory.
+
+* `npm install`
+* `gulp`
+* `node node/server.js`
+* Open a browser to http://127.0.0.1:7000/
